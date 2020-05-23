@@ -1,5 +1,20 @@
 version: 2
 jobs:
+  # bastion:
+  #   docker:
+  #     - image: hashicorp/packer:1.2.4
+  #   working_directory: ~/packer
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Install ansible
+  #         command: |
+  #           apk update && apk upgrade
+  #           apk add ansible==2.4.6.0-r1
+  #     - run:
+  #         name: build bastion ami
+  #         command: |
+  #           packer build ./packer/bastion.json
   bastion:
     docker:
       - image: circleci/python:3-stretch-browsers
@@ -9,9 +24,21 @@ jobs:
       - checkout
       - run: which python
       - run:
-          name: echo hello world
+          name: Install ansible and awscli
           command: |
-            echo "hello world"
+            sudo pip install -U pip
+            sudo pip install ansible==2.6.4.0 awscli
+      - run:
+          name: Install Packer
+          command: |
+            curl -L -o /tmp/packer.zip https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_linux_amd64.zip
+            unzip -o /tmp/packer.zip -d /tmp && sudo mv /tmp/packer /usr/local/bin
+      - run:
+          name: Build ecs image
+          command: |
+            unset SSH_AUTH_SOCK &&
+            /usr/local/bin/packer build ./packer/bastion.json
+
 workflows:
   version: 2
   workflow-build:

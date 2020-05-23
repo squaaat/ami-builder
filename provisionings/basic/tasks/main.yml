@@ -1,0 +1,32 @@
+- name: 파일 오픈 관련 내용 추가 관련 내용 추가(1)
+  become: yes
+  become_user: root
+  become_method: sudo
+  shell: 'echo "DefaultLimitNPROC=65536" >> /etc/systemd/system.conf'
+- name: 파일 오픈 관련 내용 추가 관련 내용 추가(2)
+  become: yes
+  become_user: root
+  become_method: sudo
+  shell: 'echo "DefaultLimitNOFILE=65536" >> /etc/systemd/system.conf'
+
+- name: 시작시 실행항 initialize script 복사 - init_ssh
+  become: yes
+  become_user: root
+  become_method: sudo
+  copy:
+    src: init_ssh.sh
+    dest: /root/init_ssh.sh
+    owner: root
+    group: root
+    mode: 0700
+
+- name: 시작시 실행항 initialize script 복사 - init_environment
+  become: yes
+  become_user: root
+  become_method: sudo
+  copy:
+    src: init_ssh.sh
+    dest: /root/init_ssh.sh
+    owner: root
+    group: root
+    mode: 0700
