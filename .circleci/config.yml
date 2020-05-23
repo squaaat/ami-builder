@@ -9,9 +9,20 @@ jobs:
       - checkout
       - run: which python
       - run:
-          name: echo hello world
+          name: Install ansible and awscli
           command: |
-            echo "hello world"
+            sudo pip install -U pip
+            sudo pip install ansible==2.6.4.0 awscli
+      - run:
+          name: Install Packer
+          command: |
+            curl -L -o /tmp/packer.zip https://releases.hashicorp.com/packer/1.5.6/packer_1.5.6_linux_amd64.zip
+            unzip -o /tmp/packer.zip -d /tmp && sudo mv /tmp/packer /usr/local/bin
+      - run:
+          name: Build ecs image
+          command: |
+            unset SSH_AUTH_SOCK &&
+            /usr/local/bin/packer build ./packer/bastion.json
 workflows:
   version: 2
   workflow-build:
