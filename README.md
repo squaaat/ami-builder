@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/squaaat/image-builder.svg?style=svg)](https://circleci.com/gh/squaaat/image-builder)
+
 # image-builder
 
 AWS AMI를 만들어내는 repository입니다.
