@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  bastion:
+    docker:
+      - image: circleci/python:3-stretch-browsers
+        environment:
+          USER: circleci
+    steps:
+      - checkout
+      - run: which python
+      - run:
+          name: echo hello world
+          command: |
+            echo "hello world"
+workflows:
+  version: 2
+  workflow-build:
+    jobs:
+      - bastion
