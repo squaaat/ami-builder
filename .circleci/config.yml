@@ -7,8 +7,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install ansible
+          command: |
+            apk add apk add ansible==2.9.7-r0
+      - run:
           name: build bastion ami
-          command: packer build ./packer/bastion.json
+          command: |
+            packer build ./packer/bastion.json
 
 workflows:
   version: 2
