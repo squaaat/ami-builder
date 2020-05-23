@@ -13,18 +13,11 @@
       "associate_public_ip_address": true
     }
   ],
-  "variables": {
-    "github_accounts": "drake-jin,zynkn"
-  },
   "provisioners": [
     {
       "type": "ansible",
       "playbook_file": "./provisionings/bastion.yml",
-      "host_alias": "squaaat_bastion",
-      "extra_arguments": [
-        "--extra-vars",
-        "github_accounts={{user `github_accounts`}}"
-      ]
+      "host_alias": "squaaat_bastion"
     }
   ]
 }

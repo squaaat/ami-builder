@@ -2,7 +2,7 @@ version: 2
 jobs:
   bastion:
     docker:
-      - image: hashicorp/packer:1.5.6
+      - image: hashicorp/packer:1.2.4
     working_directory: ~/packer
     steps:
       - checkout
