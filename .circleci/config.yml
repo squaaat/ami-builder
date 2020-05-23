@@ -10,7 +10,7 @@ jobs:
           name: Install ansible
           command: |
             apk update && apk upgrade
-            apk add ansible==2.4.1.0-r0
+            apk add ansible-2.4.6.0-r1
       - run:
           name: build bastion ami
           command: |
