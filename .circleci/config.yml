@@ -29,6 +29,11 @@ jobs:
             sudo pip install -U pip
             sudo pip install ansible==2.6.4.0 awscli
       - run:
+          name: Install ansible and awscli
+          command: |
+            ./scripts/downloadSecrets.sh # download secrets
+
+      - run:
           name: Install Packer
           command: |
             curl -L -o /tmp/packer.zip https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_linux_amd64.zip

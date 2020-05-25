@@ -17,5 +17,6 @@ docker가 기본적으로 들어가있는 인스턴스를 원했음
 # getting started
 
 ```
+./scripts/downloadSecrets.sh # download secrets
 packer build ./packker/bastion.json
 ```
