@@ -15,7 +15,7 @@
   become_user: root
   become_method: sudo
   shell: |
-    yum update
+    yum update -y
 
 - name: 기본적으로 설치되어야 하는 yum package install
   become: yes
