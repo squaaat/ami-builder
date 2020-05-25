@@ -10,13 +10,6 @@
   become_method: sudo
   shell: 'echo "DefaultLimitNOFILE=65536" >> /etc/systemd/system.conf'
 
-- name: yum package manager update
-  become: yes
-  become_user: root
-  become_method: sudo
-  shell: |
-    yum update -y
-
 - name: 기본적으로 설치되어야 하는 yum package install
   become: yes
   become_user: root
@@ -29,8 +22,6 @@
       - unzip
       - jq
       - vim
-      - python-dev
-      - python-pip
 
 - name: install awscli version 2
   shell: |
