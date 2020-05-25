@@ -29,10 +29,9 @@ jobs:
             sudo pip install -U pip
             sudo pip install ansible==2.6.4.0 awscli
       - run:
-          name: Install ansible and awscli
+          name: download secrets
           command: |
             ./scripts/downloadSecrets.sh # download secrets
-
       - run:
           name: Install Packer
           command: |
