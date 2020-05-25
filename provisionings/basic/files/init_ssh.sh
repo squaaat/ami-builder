@@ -1,10 +1,12 @@
 #!/bin/bash
 set -e
 
+su ec2-user
+
 GITHUB_ACCOUNTS=$1
 
 app () {
-  local authorizedKeyFile='/home/ubuntu/.ssh/authorized_keys'
+  local authorizedKeyFile='/home/ec2-user/.ssh/authorized_keys'
   IFS=$'\,'
   local accounts=($GITHUB_ACCOUNTS)
   IFS=$' '
